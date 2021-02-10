@@ -1,16 +1,23 @@
-﻿<link href="https://vjs.zencdn.net/7.4.1/video-js.css" rel="stylesheet">
+<link href="https://vjs.zencdn.net/7.4.1/video-js.css" rel="stylesheet">
 <script src='https://vjs.zencdn.net/7.4.1/video.js'></script>
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-hls/5.15.0/videojs-contrib-hls.min.js"></script> -->
 
 
 <video id="welcomeVideo" class="video-js vjs-default-skin">
-  <source id="source" src="http://iqiyi.cdn9-okzy.com/20201025/17188_8acad940/1000k/hls/index.m3u8" type="application/x-mpegURL" />
+  <source id="source" src="https://vpfak.github.io/g/index.m3u8" type="application/x-mpegURL" />
 </video>
 
 <script>
+//https://vpfak.github.io/g/index.m3u8
 //http://iqiyi.cdn9-okzy.com/20201025/17188_8acad940/1000k/hls/index.m3u8
 //http://iqiyi.cdn9-okzy.com/20201025/17188_8acad940/index.m3u8
 //http://iqiyi.cdn9-okzy.com/20201025/17188_8acad940/1000k/hls/5e4e66dde23000000.ts
+//var url_l=url_GET('url');
+//console.log(url_l)
+//sethtml('welcomeVideo','<source id="source" src="'+fh()+'" type="application/x-mpegURL" />');
+//document.getElementById('source').src  = 'http://iqiyi.cdn9-okzy.com/20201025/17188_8acad940/1000k/hls/index.m3u8';
+
+sethtml('source',fh(url_GET('url')),srre(fh(url_GET('url'))))
 
   var myVideo = videojs('welcomeVideo', {
     loop: true,
@@ -18,4 +25,41 @@
     preload: 'auto',
     autoplay: true
   })
+  
+function srre(url){
+   var ju=url.split(".")[1];
+   var type_text="";
+   if(ju=='mp4'){type_text="video/mp4"}else{type_text="application/x-mpegURL"};
+   if(ju=='m3u8'){type_text="application/x-mpegURL"}else{type_text="application/x-mpegURL"};
+   if(ju=='ogg'){type_text="video/ogg"}else{type_text="application/x-mpegURL"};
+   return type_text;
+   };
+        function url_GET(name_,isurl_){
+		   console.log(name_);
+		   var get=_GET(name_,isurl_);
+		   function _GET(name,isurl) { 
+             isurl=isurl || false;
+	             var word="(^|&)" + name + "=([^&]*)(&|$)";
+	             if(isurl){word="(^|&)" + name + "=(.*?)$";}	
+	             var reg = new RegExp(word, "i");
+                 var r = window.location.search.substr(1).match(reg);
+                 if (r !== null) {
+                     return decodeURI(r[2]);
+                 };
+                 return "";
+            }
+            return get;		
+		};//获取网址参数
+
+function fh(url_id){
+      var pid="";
+   if(url_id == "undefined"){
+       pid="https://vpfak.github.io/g/index.m3u8";
+        }else{pid="./index.m3u8" };
+        return  pid;
+};
+    function sethtml(id,url,type_text){
+        document.getElementById(id).src  = url
+		document.getElementById(id).type  = type_text
+     };
 </script>
