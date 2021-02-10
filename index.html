@@ -53,9 +53,13 @@ function srre(url){
 
 function fh(url_id){
       var pid="";
-   if(url_id == "undefined"){
-       pid="https://vpfak.github.io/g/index.m3u8";
-        }else{pid="./index.m3u8" };
+   if(url_id == null || url_id == "" || url_id == undefined){
+   //console.log('为空：');
+       pid="./index.m3u8";//"https://vpfak.github.io/g/index.m3u8";
+        }else{
+		  pid= url_id
+		  //console.log('不空：');
+		};
         return  pid;
 };
     function sethtml(id,url,type_text){
