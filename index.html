@@ -29,9 +29,9 @@ sethtml('source',fh(url_GET('url')),srre(fh(url_GET('url'))))
 function srre(url){
    var ju=url.split(".")[1];
    var type_text="";
-   if(ju=='mp4'){type_text="video/mp4"}else{type_text="application/x-mpegURL"};
-   if(ju=='m3u8'){type_text="application/x-mpegURL"}else{type_text="application/x-mpegURL"};
-   if(ju=='ogg'){type_text="video/ogg"}else{type_text="application/x-mpegURL"};
+   if(ju=='mp4'){type_text="video/mp4"}//else{type_text="application/x-mpegURL"};
+   if(ju=='m3u8'){type_text="application/x-mpegURL"}//else{type_text="application/x-mpegURL"};
+   if(ju=='ogg'){type_text="video/ogg"}//else{type_text="application/x-mpegURL"};
    return type_text;
    };
         function url_GET(name_,isurl_){
